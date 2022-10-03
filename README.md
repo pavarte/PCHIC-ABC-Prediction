@@ -78,13 +78,16 @@ As we do not expect the frequency of enhancer-promoter contacts to fall below le
 To esitmate the N imputed for candidate regions, as presented in Candidate Enhancer list, please use the following procedure:
 
 ```
-Rscript chic_split.r \
-/path/to/pchic.rds \
+Rscript imputation_script.r \
+5000000 \ #maxWindow
+0 \ #minWindow
+/path/to/save_distance_param.rds \
 /path/to/Design_directory \
+/path/to/candidate_list_directory \
+/path/to/input_pchic \
+/path/to/output_pchic_folder \
 /path/to/baitmap \
 /path/to/rmap \
-/path/to/save_distance_param.rds \
-/path/to/pchic_chr 
 ```
 The main output from this will be a directory, with folder for each chromosome, where each folder will contain imputed (eg. chr1.bedpe.gz) PCHiC contact frequency file in bedpe format as well as a separate file with CHiCAGO Score for contact interactions that have them. This directory structure can be used down the pipeline in the next step.
 
