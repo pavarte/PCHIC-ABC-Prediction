@@ -4,7 +4,9 @@ The Activity-by-Promoter Capture-Contact (PCHiC-ABC) model predicts which enhanc
 We used ABC version from the following codebase (https://github.com/broadinstitute/ABC-Enhancer-Gene-Prediction latest commit: a74aa73e66329968bc2d4068464ee9e8cacf86a1).
 
 [1] Fulco CP, Nasser J, Jones TR, Munson G, Bergman DT, Subramanian V, Grossman SR, Anyoha R, Doughty BR, Patwardhan TA, Nguyen TH, Kane M, Perez EM, Durand NC, Lareau CA, Stamenova EK, Aiden EL, Lander ES & Engreitz JM. Activity-by-contact model of enhancer–promoter regulation from thousands of CRISPR perturbations. Nat. Genet. 51, 1664–1669 (2019). https://www.nature.com/articles/s41588-019-0538-0
+
 [2] Nasser J, Bergman DT, Fulco CP, Guckelberger P, Doughty BR, Patwardhan TA, Jones TR, Nguyen TH, Ulirsch JC, Lekschas F, Mualim K, Natri HM, Weeks EM, Munson G, Kane M, Kang HY, Cui A, Ray JP, Eisenhaure TM, Collins RL, Dey K, Pfister H, Price AL, Epstein CB, Kundaje A, Xavier RJ, Daly MJ, Huang H, Finucane HK, Hacohen N, Lander ES, Engreitz JM. Genome-wide enhancer maps link risk variants to disease genes. Nature. 2021 May;593(7858):238-243. doi: 10.1038/s41586-021-03446-x
+
 [3] Cairns, J., Freire-Pritchett, P., Wingett, S.W. et al. CHiCAGO: robust detection of DNA looping interactions in Capture Hi-C data. Genome Biol 17, 127 (2016). https://doi.org/10.1186/s13059-016-0992-2
 
 If you wish to calculate PCHiC-ABC Scores, we recommend you understand how to run ABC first before using PCHiC-ABC.
