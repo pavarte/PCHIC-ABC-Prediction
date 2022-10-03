@@ -69,11 +69,11 @@ Rscript chic_split.r \
 ```
 ### Step 3. Running PCHiC imputation
 
-To adapt ABC for PCHi-C data, we took advantage of the CHiCAGO normalisation algorithm and developed an imputation procedure in the normalised counts space based on the inferred decay of interaction read counts with distance. As we do not expect the frequency of enhancer-promoter contacts to fall below levels expected due to Brownian collision, for a given pair of fragments involving a baited promoter we select the maximum between the CHiCAGO-normalised observed read counts (Nobs) and expected read counts Nexp estimated as Nexp = Bmean/(si*sj), where Bmean is the CHiCAGO-estimated Brownian noise level and si and sj and the bait- and other end-specific scaling factors. For promoters that could not be baited in the Capture Hi-C design and those, the reads for which were filtered out due to QC fail, we estimate the expected normalised read count directly from the interaction distance d, using the distance function f(d), estimated by CHiCAGO. Please refer to Additional File 1 in the publication presenting the CHiCAGO pipeline for the formal definition of these parameters and their estimation procedures.
+To adapt ABC for PCHi-C data, we took advantage of the CHiCAGO normalisation algorithm and developed an imputation procedure in the normalised counts space based on the inferred decay of interaction read counts with distance. 
 
+As we do not expect the frequency of enhancer-promoter contacts to fall below levels expected due to Brownian collision, for a given pair of fragments involving a baited promoter we select the maximum between the CHiCAGO-normalised observed read counts (Nobs) and expected read counts Nexp estimated as Nexp = Bmean/(si*sj), where Bmean is the CHiCAGO-estimated Brownian noise level and si and sj and the bait- and other end-specific scaling factors. For promoters that could not be baited in the Capture Hi-C design and those, the reads for which were filtered out due to QC fail, we estimate the expected normalised read count directly from the interaction distance d, using the distance function f(d), estimated by CHiCAGO. Please refer to Additional File 1 in the publication presenting the CHiCAGO pipeline for the formal definition of these parameters and their estimation procedures.
 
-
-
+To esitmate the N imputed for candidate regions, as presented in Candidate Enhancer list, please use the following procedure:
 
 ```
 Rscript chic_split.r \
@@ -84,10 +84,11 @@ Rscript chic_split.r \
 /path/to/save_distance_param.rds \
 /path/to/pchic_chr 
 ```
+The main output from this will be a directory, with folder for each chromosome, where each folder will contain imputed (eg. chr1.bedpe.gz) PCHiC contact frequency file in bedpe format as well as a separate file with CHiCAGO Score for contact interactions that have them. This directory structure can be used down the pipeline in the next step.
 
 ### Step 4. Computing the ABC Score
 
-Compute ABC scores by combining Activity (as calculated by ```run.neighborhoods.py```) and imputed PCHi-C. We modified predict.py to optimise for PCHiC imputation, so please refer to our version of predict.py when running the ABC Scores using our version of imputed PCHiC.
+Compute ABC scores by combining Activity (as calculated by ```run.neighborhoods.py```) and imputed PCHi-C. We modified predict.py to optimise for PCHiC imputation, so please refer to our version of predict.py when running the ABC Scores using our version of imputed PCHiC. Please include ```--hic_type bedpe``` flag. 
 
 Sample Command:
 
