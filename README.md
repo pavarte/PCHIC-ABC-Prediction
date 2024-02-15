@@ -52,24 +52,7 @@ We recommend you refer to the version of the ABC from 22nd September 2022 to cal
 
 https://github.com/broadinstitute/ABC-Enhancer-Gene-Prediction
 
-### Step 2. Preparing for imputation
-Imputation is a computationally heavy script, for speed we devised such that it is done by chromosome, so each candidate lists need to be split into individual chromosomes. We attach the script to separate the files chromosome by chromosome. 
-```
-Rscript chr_split.r EnhancerList.txt
-Rscript chr_split.r GeneList.txt
-```
-Chromosome splitting and saving distance parameters are also needed to be performed before running the imputations. The following command using our scripts will separate the files into individual CHiCAGO object chromosome files as well as will save a distance parameters file. 
-
-```
-Rscript chic_split.r \
-/path/to/pchic.rds \
-/path/to/Design_directory \
-/path/to/baitmap \
-/path/to/rmap \
-/path/to/save_distance_param.rds \
-/path/to/pchic_chr 
-```
-### Step 3. Running PCHiC imputation
+### Step 2. Running PCHiC imputation
 
 To adapt ABC for PCHi-C data, we took advantage of the CHiCAGO normalisation algorithm and developed an imputation procedure in the normalised counts space based on the inferred decay of interaction read counts with distance. 
 
@@ -78,18 +61,23 @@ As we do not expect the frequency of enhancer-promoter contacts to fall below le
 To esitmate the N imputed for candidate regions, as presented in Candidate Enhancer list, please use the following procedure:
 
 ```
-Rscript imputation_script.r \
-5000000 \ #maxWindow
-0 \ #minWindow
-/path/to/save_distance_param.rds \
-/path/to/Design_directory \
-/path/to/candidate_list_directory \
-/path/to/input_pchic \
-/path/to/output_pchic_folder \
-/path/to/baitmap \
-/path/to/rmap \
+k562_roadmap=/path/to/ABC_data/input/K562_roadmap_DpnII_frag/
+pchic_rds=${k562_roadmap}K562_fres_merged_reweighted.Rds
+design=/path/to/Design_for_PCHIC/Human_DpnII_binsize1500_maxL75K/
+enhancerdir=${k562_roadmap}
+split_pchic=${k562_roadmap}K562_frag_dpnii_
+distout_rds=${k562_roadmap}K562_frag_dpnii_dist.rds
+imputed_pchic_prefix=${k562_roadmap}imputed_contact/
+mkdir $imputed_pchic_prefix
+
+
+
+Rscript imputation_script.r ${pchic_rds} ${design} ${enhancerdir} ${split_pchic} ${distout_rds} ${imputed_pchic_prefix}
+
 ```
 The main output from this will be a directory, with folder for each chromosome, where each folder will contain imputed (eg. chr1.bedpe.gz) PCHiC contact frequency file in bedpe format as well as a separate file with CHiCAGO Score for contact interactions that have them. This directory structure can be used down the pipeline in the next step.
+
+Imputation is a computationally heavy script, for speed we devised such that it is done by chromosome, so each candidate lists need to be split into individual chromosomes. We attach the script to separate the files chromosome by chromosome. Chromosome splitting and saving distance parameters are also needed to be performed before running the imputations. The following command using our scripts will separate the files into individual CHiCAGO object chromosome files as well as will save a distance parameters file. These steps are run in the background, the supporting files are present in the src folder. 
 
 ### Step 4. Computing the ABC Score
 
@@ -99,9 +87,9 @@ Sample Command:
 
 ```
 python src_mod/predict.py \
---enhancers EnhancerList.txt \
---genes GeneList.txt \
---HiCdir PCHiC_imputed/ \
+--enhancers ${k562_roadmap}/EnhancerList.txt \
+--genes ${k562_roadmap}/GeneList.txt \
+--HiCdir ${k562_roadmap}imputed_contact/ \
 --chrom_sizes reference/chrom.sizes.og \
 --threshold .02 \
 --cellType K562 \
@@ -109,6 +97,13 @@ python src_mod/predict.py \
 --outdir ABC_scores \
 --make_all_putative
 ```
+## Human Genome assembly conversion.
+For conversion of EnahncerList and GeneList files, we have added the script enhancerliftover that liftsover the files between Hg19 and Hg38. The use is shown below. 
+
+```
+Rscript enhancerliftoverwrapper.R EnhancerList.txt GeneList.txt
+```
+
 
 ## (Additional Information as taken from the orignal GitHub) Defining Candidate Enhancers
 'Candidate elements' are the set of putative enhancers; ABC scores will be computed for all 'Candidate elements' within 5Mb of each gene. In computing the ABC score, the product of DNase-seq (or ATAC-seq) and H3K27ac ChIP-seq reads will be counted in each candidate element. Thus the candidate elements should be regions of open (nucleasome depleted) chromatin of sufficient length to capture H3K27ac marks on flanking nucleosomes. In [1], we defined candidate regions to be 500bp (150bp of the DHS peak extended 175bp in each direction). 
