@@ -1,0 +1,9 @@
+name: r43
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+  - imperial-college-research-computing
+dependencies:
+  - r-base=4.3
+prefix: /rds/general/user/pa2915/home/anaconda3/envs/r43
