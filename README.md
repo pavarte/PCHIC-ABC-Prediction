@@ -1,4 +1,4 @@
-# PCHIC-ABC-Prediction
+# PCHiC-ABC-Prediction
 The Activity-by-Promoter Capture-Contact (PCHiC-ABC) model predicts which enhancers regulate which genes using Promoter Capture HiC experiments. This repository is a modified version of the ABC Model devised by Nasser et al [1]. Please see Cairns et al [3] for full description of mathmatical basis of CHiCAGO.
 
 We used ABC version from the following codebase (https://github.com/broadinstitute/ABC-Enhancer-Gene-Prediction latest commit: a74aa73e66329968bc2d4068464ee9e8cacf86a1).
