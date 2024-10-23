@@ -131,6 +131,7 @@ parentheses):
 
 ```
 Python (3.6.4)
+CHiCAGO
 samtools (0.1.19)
 bedtools (2.26.0)
 Tabix (0.2.5) - Partial dependancy
