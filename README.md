@@ -13,12 +13,11 @@ If you wish to calculate PCHiC-ABC Scores, we recommend you understand how to ru
 ## Requirements
 For each cell-type, the inputs to the ABC model are:
 
- * Required Inputs
+ * Inputs
  	* bam file for Dnase-Seq or ATAC-Seq (indexed and sorted)
  	* bam file for H3K27ac ChIP-Seq (indexed and sorted)
- * Optional Inputs
  	* PCHi-C data (see the PCHi-C imputation section below)
- 	* A measure of gene expression
+ 	* A measure of gene expression (we always gene-level TPM)
 
 In addition the following (non-cell-type specific) genome annotation files are required
 
