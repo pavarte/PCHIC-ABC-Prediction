@@ -81,7 +81,7 @@ Imputation is a computationally heavy script, for speed we devised such that it 
 
 ### Step 4. Computing the ABC Score
 
-Compute ABC scores by combining Activity (as calculated by ```run.neighborhoods.py```) and imputed PCHi-C. We modified predict.py to optimise for PCHiC imputation, so please refer to our version of predict.py when running the ABC Scores using our version of imputed PCHiC. Please include ```--hic_type bedpe``` flag. 
+Compute ABC scores by combining Activity (as calculated by ```run.neighborhoods.py```) and imputed PCHi-C. We modified predict.py to work with output from PCHiC imputation, so please refer to our version of predictor.py when running the ABC Scores using our version of imputed PCHiC. Please include ```--hic_type bedpe``` flag.
 
 Sample Command:
 
@@ -98,7 +98,7 @@ python src_mod/predict.py \
 --make_all_putative
 ```
 ## Human Genome assembly conversion.
-For conversion of EnahncerList and GeneList files, we have added the script enhancerliftover that liftsover the files between Hg19 and Hg38. The use is shown below. 
+For conversion of EnahncerList and GeneList files, we have added the script enhancerliftover that performs liftover the files between Hg19 and Hg38. The use is shown below. The .chain file can be found separately. 
 
 ```
 Rscript enhancerliftoverwrapper.R EnhancerList.txt GeneList.txt
