@@ -66,10 +66,13 @@ def main():
     output_dir = args.output_file_path
     
     # Call the function to compute vector
-    vector = get_norm_KR_vector_matlab(ccmap)
-
+    vector = get_norm_KR_vector_matlab(ccmap)# Call the function to compute vector
+    
     # Save the vector
     save_vector(vector, output_dir, output_file_name)
+    # Export the ccmap as txt
+    ccmap_output = os.path.join(output_dir,args.ccmap_input+".exported.txt")
+    gmlib.ccmap.export_cmap(ccmap, ccmap_output, doNotWriteZeros=True)
 
 
 if __name__ == '__main__':
