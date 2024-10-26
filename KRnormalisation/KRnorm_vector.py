@@ -70,9 +70,6 @@ def main():
     
     # Save the vector
     save_vector(vector, output_dir, output_file_name)
-    # Export the ccmap as txt
-    ccmap_output = os.path.join(output_dir,args.ccmap_input+".exported.txt")
-    gmlib.ccmap.export_cmap(ccmap, ccmap_output, doNotWriteZeros=True)
 
 
 if __name__ == '__main__':
