@@ -13,7 +13,7 @@ module load miniconda3
 conda activate octave
 cd ./
 
-for i in $(ls subsampled/chromosomes);
+for i in $(ls subsampled);
 do
         echo $i
         gcMapExplorer normKR -i ${i} -fi ccmap -o ${i}.KR.normalised.ccmap -fo ccmap -m RAM
