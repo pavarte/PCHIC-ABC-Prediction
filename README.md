@@ -1,7 +1,9 @@
 # PCHiC-ABC-Prediction
-The Activity-by-Promoter Capture-Contact (PCHiC-ABC) model predicts which enhancers regulate which genes using Promoter Capture HiC experiments. This repository is a modified version of the ABC Model devised by Nasser et al [1]. Please see Cairns et al [3] for full description of mathmatical basis of CHiCAGO.
+Promoter Capture Hi-C or Capture HiC is HiC library enriched for a particular type of contact in the genome using hybridisation probes. Capture HiC can be modified by using a different type of enrichment library through modified design of the enrichment probes allowing identification of regions interacting not only with promoters but other types of element in the nucleus. Please see Freire-Prittchett, Malysheva et al. [4] for informaiton about Promoter Capture HiC and its accompanying tools .
 
-We used ABC version from the following codebase (https://github.com/broadinstitute/ABC-Enhancer-Gene-Prediction latest commit: a74aa73e66329968bc2d4068464ee9e8cacf86a1).
+The Activity-by-Promoter Capture-Contact (PCHiC-ABC) model predicts which enhancers regulate which genes using Promoter Capture HiC experiments by integrating chromatin 'activity' data with the chromatin 'contact' data. This repository is a modified version of the ABC Model devised by Nasser et al [1]. Please see Cairns et al [3] for full description of mathmatical basis of CHiCAGO.
+
+ABC version from the following codebase was used (https://github.com/broadinstitute/ABC-Enhancer-Gene-Prediction latest commit: a74aa73e66329968bc2d4068464ee9e8cacf86a1).
 
 [1] Fulco CP, Nasser J, Jones TR, Munson G, Bergman DT, Subramanian V, Grossman SR, Anyoha R, Doughty BR, Patwardhan TA, Nguyen TH, Kane M, Perez EM, Durand NC, Lareau CA, Stamenova EK, Aiden EL, Lander ES & Engreitz JM. Activity-by-contact model of enhancer–promoter regulation from thousands of CRISPR perturbations. Nat. Genet. 51, 1664–1669 (2019). https://www.nature.com/articles/s41588-019-0538-0
 
@@ -9,13 +11,17 @@ We used ABC version from the following codebase (https://github.com/broadinstitu
 
 [3] Cairns, J., Freire-Pritchett, P., Wingett, S.W. et al. CHiCAGO: robust detection of DNA looping interactions in Capture Hi-C data. Genome Biol 17, 127 (2016). https://doi.org/10.1186/s13059-016-0992-2
 
+[4] Freire-Pritchett, P., Ray-Jones, H., Della Rosa, M. et al. Detecting chromosomal interactions in Capture Hi-C data with CHiCAGO and companion tools. Nat Protoc 16, 4144–4176 (2021) https://doi.org/10.1038/s41596-021-00567-5
+
 If you wish to calculate PCHiC-ABC Scores, we recommend you understand how to run ABC first before using PCHiC-ABC.
+If 
+
 ## Requirements
 For each cell-type, the inputs to the ABC model are:
 
  * Inputs
  	* bam file for Dnase-Seq or ATAC-Seq (indexed and sorted)
- 	* bam file for H3K27ac ChIP-Seq (indexed and sorted)
+ 	* bam file for H3K27ac ChIP-Seq (indexed and sorted) (optional)
  	* PCHi-C data (see the PCHi-C imputation section below)
  	* A measure of gene expression (we always gene-level TPM)
 
@@ -37,7 +43,6 @@ Operationally, Activity (A) is defined as the geometric mean of the read counts 
 
 Note that the ABC model only considers candidate elements and genes on the same chromosome. It does not make interchromosomal predictions.
 
- 
 ## Running the ABC Model
 Running the ABC model consists of the following steps:
 
@@ -103,6 +108,13 @@ For conversion of EnahncerList and GeneList files, we have added the script enha
 Rscript enhancerliftoverwrapper.R EnhancerList.txt GeneList.txt
 ```
 
+## Subsampling the HiC for library normalisation
+In the cases where a subsampled fraction of HiC reads was needed, to circumvent KR normalisation and for speed of processing, a threshold can be changed in process_hic function in the hic.py file. The kr_threshold default is 0.25. The new threshold can be found by solving:
+
+```
+subsample_ratio = target_number_of_total_reads/existing_number_of_total_reads
+new_threshold = 1 - subsample_ratio * (1 - default_threshold)
+```
 
 ## (Additional Information as taken from the orignal GitHub) Defining Candidate Enhancers
 'Candidate elements' are the set of putative enhancers; ABC scores will be computed for all 'Candidate elements' within 5Mb of each gene. In computing the ABC score, the product of DNase-seq (or ATAC-seq) and H3K27ac ChIP-seq reads will be counted in each candidate element. Thus the candidate elements should be regions of open (nucleasome depleted) chromatin of sufficient length to capture H3K27ac marks on flanking nucleosomes. In [1], we defined candidate regions to be 500bp (150bp of the DHS peak extended 175bp in each direction). 
