@@ -21,7 +21,7 @@ Inputs:
  	* bam file for Dnase-Seq or ATAC-Seq (indexed and sorted)
  	* bam file for H3K27ac ChIP-Seq (indexed and sorted) (optional)
  	* PCHi-C data (see the PCHi-C imputation section below)
- 	* A measure of gene expression (we always gene-level TPM)
+ 	* A measure of gene expression (gene-level TPM)
 
 In addition the following (non-cell-type specific) genome annotation files are required:
 
