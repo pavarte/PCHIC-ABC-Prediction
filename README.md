@@ -20,13 +20,13 @@ If
 ## Requirements
 For each cell-type, the inputs to the ABC model are:
 
- * Inputs
+Inputs:
  	* bam file for Dnase-Seq or ATAC-Seq (indexed and sorted)
  	* bam file for H3K27ac ChIP-Seq (indexed and sorted) (optional)
  	* PCHi-C data (see the PCHi-C imputation section below)
  	* A measure of gene expression (we always gene-level TPM)
 
-In addition the following (non-cell-type specific) genome annotation files are required
+In addition the following (non-cell-type specific) genome annotation files are required:
 
  * bed file containing gene annotations (may change across cell types if using cell-type specific TSS's)
  * bed file containing chromosome annotations
@@ -40,7 +40,7 @@ To convert this conceptual framework into a practical score (which can be applie
 
 ABC score for effect of element E on gene G = Activity of E × Contact frequency between E and G /  Sum of (Activity × Contact Frequency) over all candidate elements within 5 Mb.
 
-Operationally, Activity (A) is defined as the geometric mean of the read counts of DNase-seq and H3K27ac ChIP-seq at an element E, and Contact (C) as the KR normalized Hi-C contact frequency between E and the promoter of gene G. Elements are defined as ~500bp regions centered on DHS peaks. 
+Operationally, Activity (A) is defined as the geometric mean of the read counts of DNase-seq and H3K27ac ChIP-seq at an element E, and Contact (C) as the KR normalized Hi-C contact frequency between E and the promoter of gene G. Elements are defined as ~500bp regions centered on DHS/ATAC peaks. 
 
 Note that the ABC model only considers candidate elements and genes on the same chromosome. It does not make interchromosomal predictions.
 
@@ -74,8 +74,6 @@ split_pchic=${k562_roadmap}K562_frag_dpnii_
 distout_rds=${k562_roadmap}K562_frag_dpnii_dist.rds
 imputed_pchic_prefix=${k562_roadmap}imputed_contact/
 mkdir $imputed_pchic_prefix
-
-
 
 Rscript imputation_script.r ${pchic_rds} ${design} ${enhancerdir} ${split_pchic} ${distout_rds} ${imputed_pchic_prefix}
 
