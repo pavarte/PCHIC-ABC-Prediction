@@ -1,7 +1,7 @@
 # PCHiC-ABC-Prediction
 Promoter Capture Hi-C or Capture HiC is HiC library enriched for a particular type of contact in the genome using hybridisation probes. Capture HiC can be modified by using a different type of enrichment library through modified design of the enrichment probes allowing identification of regions interacting not only with promoters but other types of element in the nucleus. Please see Freire-Prittchett, Malysheva et al. [1] for information about Promoter Capture HiC and its accompanying tools .
 
-The Activity-by-Promoter Capture-Contact (PCHiC-ABC) model predicts which enhancers regulate which genes using Promoter Capture HiC experiments by integrating chromatin 'activity' data with the chromatin 'contact' data. This repository is a modified version of the ABC Model devised by Nasser et al [2] [3]. Please see Cairns et al [4] for full description of mathmatical basis of CHiCAGO.
+The Promoter Capture HiC-Activity-by-Contact (sometimes I referred to it as Activity-by-Promoter Capture-Contact, please feel free to use it as you see fit) (APCC/PCHiC-ABC) model predicts which enhancers regulate which genes using Promoter Capture HiC experiments by integrating chromatin 'activity' data with the chromatin 'contact' data. This repository is a modified version of the ABC Model devised by Nasser et al [2] [3]. Please see Cairns et al [4] for full description of mathmatical basis of CHiCAGO.
 
 ABC version from the following codebase was used (https://github.com/broadinstitute/ABC-Enhancer-Gene-Prediction latest commit: a74aa73e66329968bc2d4068464ee9e8cacf86a1).
 
