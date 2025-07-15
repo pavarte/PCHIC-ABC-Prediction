@@ -13,10 +13,6 @@ ABC version from the following codebase was used (https://github.com/broadinstit
 
 [4] Cairns, J., Freire-Pritchett, P., Wingett, S.W. et al. CHiCAGO: robust detection of DNA looping interactions in Capture Hi-C data. Genome Biol 17, 127 (2016). https://doi.org/10.1186/s13059-016-0992-2
 
-
-If you wish to calculate PCHiC-ABC Scores, we recommend you understand how to run ABC first before using PCHiC-ABC.
-If 
-
 ## Requirements
 For each cell-type, the inputs to the ABC model are:
 
