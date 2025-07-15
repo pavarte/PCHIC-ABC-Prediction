@@ -1,17 +1,18 @@
 # PCHiC-ABC-Prediction
-Promoter Capture Hi-C or Capture HiC is HiC library enriched for a particular type of contact in the genome using hybridisation probes. Capture HiC can be modified by using a different type of enrichment library through modified design of the enrichment probes allowing identification of regions interacting not only with promoters but other types of element in the nucleus. Please see Freire-Prittchett, Malysheva et al. [4] for informaiton about Promoter Capture HiC and its accompanying tools .
+Promoter Capture Hi-C or Capture HiC is HiC library enriched for a particular type of contact in the genome using hybridisation probes. Capture HiC can be modified by using a different type of enrichment library through modified design of the enrichment probes allowing identification of regions interacting not only with promoters but other types of element in the nucleus. Please see Freire-Prittchett, Malysheva et al. [1] for information about Promoter Capture HiC and its accompanying tools .
 
-The Activity-by-Promoter Capture-Contact (PCHiC-ABC) model predicts which enhancers regulate which genes using Promoter Capture HiC experiments by integrating chromatin 'activity' data with the chromatin 'contact' data. This repository is a modified version of the ABC Model devised by Nasser et al [1]. Please see Cairns et al [3] for full description of mathmatical basis of CHiCAGO.
+The Activity-by-Promoter Capture-Contact (PCHiC-ABC) model predicts which enhancers regulate which genes using Promoter Capture HiC experiments by integrating chromatin 'activity' data with the chromatin 'contact' data. This repository is a modified version of the ABC Model devised by Nasser et al [2] [3]. Please see Cairns et al [4] for full description of mathmatical basis of CHiCAGO.
 
 ABC version from the following codebase was used (https://github.com/broadinstitute/ABC-Enhancer-Gene-Prediction latest commit: a74aa73e66329968bc2d4068464ee9e8cacf86a1).
 
-[1] Fulco CP, Nasser J, Jones TR, Munson G, Bergman DT, Subramanian V, Grossman SR, Anyoha R, Doughty BR, Patwardhan TA, Nguyen TH, Kane M, Perez EM, Durand NC, Lareau CA, Stamenova EK, Aiden EL, Lander ES & Engreitz JM. Activity-by-contact model of enhancer–promoter regulation from thousands of CRISPR perturbations. Nat. Genet. 51, 1664–1669 (2019). https://www.nature.com/articles/s41588-019-0538-0
+[1] Freire-Pritchett, P., Ray-Jones, H., Della Rosa, M. et al. Detecting chromosomal interactions in Capture Hi-C data with CHiCAGO and companion tools. Nat Protoc 16, 4144–4176 (2021) https://doi.org/10.1038/s41596-021-00567-5
 
-[2] Nasser J, Bergman DT, Fulco CP, Guckelberger P, Doughty BR, Patwardhan TA, Jones TR, Nguyen TH, Ulirsch JC, Lekschas F, Mualim K, Natri HM, Weeks EM, Munson G, Kane M, Kang HY, Cui A, Ray JP, Eisenhaure TM, Collins RL, Dey K, Pfister H, Price AL, Epstein CB, Kundaje A, Xavier RJ, Daly MJ, Huang H, Finucane HK, Hacohen N, Lander ES, Engreitz JM. Genome-wide enhancer maps link risk variants to disease genes. Nature. 2021 May;593(7858):238-243. doi: 10.1038/s41586-021-03446-x
+[2] Fulco CP, Nasser J, Jones TR, Munson G, Bergman DT, Subramanian V, Grossman SR, Anyoha R, Doughty BR, Patwardhan TA, Nguyen TH, Kane M, Perez EM, Durand NC, Lareau CA, Stamenova EK, Aiden EL, Lander ES & Engreitz JM. Activity-by-contact model of enhancer–promoter regulation from thousands of CRISPR perturbations. Nat. Genet. 51, 1664–1669 (2019). https://www.nature.com/articles/s41588-019-0538-0
 
-[3] Cairns, J., Freire-Pritchett, P., Wingett, S.W. et al. CHiCAGO: robust detection of DNA looping interactions in Capture Hi-C data. Genome Biol 17, 127 (2016). https://doi.org/10.1186/s13059-016-0992-2
+[3] Nasser J, Bergman DT, Fulco CP, Guckelberger P, Doughty BR, Patwardhan TA, Jones TR, Nguyen TH, Ulirsch JC, Lekschas F, Mualim K, Natri HM, Weeks EM, Munson G, Kane M, Kang HY, Cui A, Ray JP, Eisenhaure TM, Collins RL, Dey K, Pfister H, Price AL, Epstein CB, Kundaje A, Xavier RJ, Daly MJ, Huang H, Finucane HK, Hacohen N, Lander ES, Engreitz JM. Genome-wide enhancer maps link risk variants to disease genes. Nature. 2021 May;593(7858):238-243. doi: 10.1038/s41586-021-03446-x
 
-[4] Freire-Pritchett, P., Ray-Jones, H., Della Rosa, M. et al. Detecting chromosomal interactions in Capture Hi-C data with CHiCAGO and companion tools. Nat Protoc 16, 4144–4176 (2021) https://doi.org/10.1038/s41596-021-00567-5
+[4] Cairns, J., Freire-Pritchett, P., Wingett, S.W. et al. CHiCAGO: robust detection of DNA looping interactions in Capture Hi-C data. Genome Biol 17, 127 (2016). https://doi.org/10.1186/s13059-016-0992-2
+
 
 If you wish to calculate PCHiC-ABC Scores, we recommend you understand how to run ABC first before using PCHiC-ABC.
 If 
@@ -33,7 +34,7 @@ In addition the following (non-cell-type specific) genome annotation files are r
 
 ## Description of the ABC Model
 
-The Activity by Contact (ABC) model is designed to represent a mechanistic model in which enhancers activate gene transcription upon enhancer-promoter contact. In a simple conception of such a model, the quantitative effect of an enhancer depends on the frequency with which it contacts a promoter multiplied by the strength of the enhancer (i.e., the ability of the enhancer to activate transcription upon contacting a promoter). Moreover, the contribution of a specific enhancer to a gene’s expression should depend on the surrounding context (ie, the strength and contact frequency of other enhancers for the gene).
+The Activity by Contact (ABC) model is designed to represent a mechanistic model in which enhancers activate gene transcription upon enhancer-promoter contact. In a simple conception of such a model, the quantitative effect of an enhancer depends on the frequency with which it contacts a promoter multiplied by the strength of the enhancer (i.e., the ability of the enhancer to activate transcription upon contacting a promoter). Moreover, the contribution of a specific enhancer to a gene’s expression should depend on the surrounding context (ie, the strength and contact frequency of other enhancers for the gene). As a reminder, the original ABC was developed by Nasser et al. and Fulco et al. [2][3]
 
 To convert this conceptual framework into a practical score (which can be applied genome-wide), we formulated the ABC score:
 
@@ -43,12 +44,12 @@ Operationally, Activity (A) is defined as the geometric mean of the read counts 
 
 Note that the ABC model only considers candidate elements and genes on the same chromosome. It does not make interchromosomal predictions.
 
-## Running the ABC Model
-Running the ABC model consists of the following steps:
+## Running the PCHiC-ABC Model
+Running the PCHiC-ABC model consists of the following steps:
 
- 1. Define candidate enhancer regions
- 2. Quantify enhancer activity
- 3. Compute ABC Scores
+ 1. Define candidate enhancer and gene regions [Same as the original ABC model]
+ 2. Running PCHiC imputation [the original ABC model doesn't detail these processes]
+ 3. Compute ABC Scores [the codebase is slightly modified here compared to the original]
 
 ### Step 1. Calculating Candidate Enhancers and Genes.
 
@@ -83,7 +84,7 @@ The main output from this will be a directory, with folder for each chromosome, 
 
 Imputation is a computationally heavy script, for speed we devised such that it is done by chromosome, so each candidate lists need to be split into individual chromosomes. We attach the script to separate the files chromosome by chromosome. Chromosome splitting and saving distance parameters are also needed to be performed before running the imputations. The following command using our scripts will separate the files into individual CHiCAGO object chromosome files as well as will save a distance parameters file. These steps are run in the background, the supporting files are present in the src folder. 
 
-### Step 4. Computing the ABC Score
+### Step 3. Computing the ABC Score
 
 Compute ABC scores by combining Activity (as calculated by ```run.neighborhoods.py```) and imputed PCHi-C. We modified predict.py to work with output from PCHiC imputation, so please refer to our version of predictor.py when running the ABC Scores using our version of imputed PCHiC. Please include ```--hic_type bedpe``` flag.
 
@@ -108,14 +109,6 @@ For conversion of EnahncerList and GeneList files, we have added the script enha
 Rscript enhancerliftoverwrapper.R EnhancerList.txt GeneList.txt
 ```
 
-## Subsampling the HiC for library normalisation
-In the cases where a subsampled fraction of HiC reads was needed, to circumvent KR normalisation and for speed of processing, a threshold can be changed in process_hic function in the hic.py file. The kr_threshold default is 0.25. The new threshold can be found by solving:
-
-```
-subsample_ratio = target_number_of_total_reads/existing_number_of_total_reads
-new_threshold = 1 - subsample_ratio * (1 - default_threshold)
-```
-
 ## (Additional Information as taken from the orignal GitHub) Defining Candidate Enhancers
 'Candidate elements' are the set of putative enhancers; ABC scores will be computed for all 'Candidate elements' within 5Mb of each gene. In computing the ABC score, the product of DNase-seq (or ATAC-seq) and H3K27ac ChIP-seq reads will be counted in each candidate element. Thus the candidate elements should be regions of open (nucleasome depleted) chromatin of sufficient length to capture H3K27ac marks on flanking nucleosomes. In [1], we defined candidate regions to be 500bp (150bp of the DHS peak extended 175bp in each direction). 
 
@@ -129,7 +122,7 @@ We also force the candidate enhancer regions to include gene promoters, even if 
 ## Tips and Comments
 
 * We thank the Fulco, Nasser, Engreitz et al for developing the original ABC model and making the codebase accessible. 
-* We found that exact threshold for cutoff depends on the noiseness of the inpur data. We therefore recommend you plot log(Expression) against number of enhancers against varying threholds and find a value that balances the number of enhancer with sufficient predictability of expression at higher number of enhancers.
+* We found that exact threshold for cutoff depends on the noiseness of the input data. We therefore recommend you plot log(Expression) against number of enhancers against varying threholds and find a value that balances the number of enhancer with sufficient predictability of expression at higher number of enhancers.
 * Please note the expression file should tab separated with no column names.
 
 
@@ -137,8 +130,7 @@ We also force the candidate enhancer regions to include gene promoters, even if 
 Please submit a github issue with any questions or if you experience any issues/bugs. 
 
 ### Dependencies
-
-The codebase relies on the following dependancies (tested version provided in 
+The codebase relies on the following dependencies (tested version provided in 
 parentheses):
 
 ```
