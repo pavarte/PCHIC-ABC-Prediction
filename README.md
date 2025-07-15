@@ -21,6 +21,7 @@ If
 For each cell-type, the inputs to the ABC model are:
 
 Inputs:
+
  	* bam file for Dnase-Seq or ATAC-Seq (indexed and sorted)
  	* bam file for H3K27ac ChIP-Seq (indexed and sorted) (optional)
  	* PCHi-C data (see the PCHi-C imputation section below)
