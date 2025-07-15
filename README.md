@@ -50,7 +50,7 @@ Running the PCHiC-ABC model consists of the following steps:
 
 ### Step 1. Calculating Candidate Enhancers and Genes.
 
-We recommend you refer to the version of the ABC from 22nd September 2022 to calcualte candidate EnhancerLists.txt and GeneLists.txt that are used in the imputation step of the PCHiC. 
+I recommend you refer to the version of the ABC from 22nd September 2022 to calcualte candidate EnhancerLists.txt and GeneLists.txt that are used in the imputation step of the PCHiC. 
 
 https://github.com/broadinstitute/ABC-Enhancer-Gene-Prediction
 
