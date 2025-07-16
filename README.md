@@ -117,8 +117,8 @@ We also force the candidate enhancer regions to include gene promoters, even if 
 ## Tips and Comments
 
 * We thank the Fulco, Nasser, Engreitz et al for developing the original ABC model and making the codebase accessible. 
-* We found that exact threshold for cutoff depends on the noiseness of the input data. We therefore recommend you plot log(Expression) against number of enhancers against varying threholds and find a value that balances the number of enhancer with sufficient predictability of expression at higher number of enhancers.
-* Please note the expression file should tab separated with no column names.
+* We found that the exact cutoff threshold depends on how noisy the input data is. We therefore recommend plotting log(Expression) against the number of enhancers using different thresholds, then selecting a value that balances having enough enhancers with reliable expression prediction at higher enhancer counts.
+* Please note the expression file should be tab separated with no column names...
 
 
 ## Contact
