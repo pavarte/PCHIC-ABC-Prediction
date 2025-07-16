@@ -72,7 +72,7 @@ distout_rds=${k562_roadmap}K562_frag_dpnii_dist.rds
 imputed_pchic_prefix=${k562_roadmap}imputed_contact/
 mkdir $imputed_pchic_prefix
 
-Rscript imputation_script.r ${pchic_rds} ${design} ${enhancerdir} ${split_pchic} ${distout_rds} ${imputed_pchic_prefix}
+Rscript imputation_script_whole_genome.r ${pchic_rds} ${design} ${enhancerdir} ${split_pchic} ${distout_rds} ${imputed_pchic_prefix}
 
 ```
 The main output from this will be a directory, with folder for each chromosome, where each folder will contain imputed (eg. chr1.bedpe.gz) PCHiC contact frequency file in bedpe format as well as a separate file with CHiCAGO Score for contact interactions that have them. This directory structure can be used down the pipeline in the next step.
