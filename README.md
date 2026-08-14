@@ -357,5 +357,4 @@ Conda environments are provided in `r43.yml` (full environment) and `r43_nohisto
 [4] Cairns J, Freire-Pritchett P, Wingett SW, et al. CHiCAGO: robust detection of DNA looping interactions in Capture Hi-C data. *Genome Biol.* 17, 127 (2016). https://doi.org/10.1186/s13059-016-0992-2
 
 ## Citation
-
-Malysheva et al., High-resolution promoter interaction analysis implicates genes involved in the activation of Type 3 Innate Lymphoid Cells in autoimmune disease risk. *bioRxiv* https://doi.org/10.1101/2022.10.19.512842.
+Malysheva, V., Ray-Jones, H., Lakes, N. et al. High-resolution promoter interaction analysis implicates genes involved in activation of type 3 innate lymphoid cells in immune disease risk. Nat Genet 58, 1953–1966 (2026). https://doi.org/10.1038/s41588-026-02681-0
